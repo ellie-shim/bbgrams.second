@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>자바스크립트 기본 정리 03 - Null, Undefined | Shim SoYoung</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="null    없음을 나타내는 값 객체가 없음을 나타낸다. typeof 연산을 해보면 아래와 같은 값을 반환한다.  12typeof null // &apos;object&apos;typeof undefined // &apos;undefined&apos;  undefined   없음을 나타내는 값 값이 대입되지 않은 변수 혹은 속성을 사용하려고 하면 undefined를 반환한다.  12345">
+<meta property="og:type" content="article">
+<meta property="og:title" content="자바스크립트 기본 정리 03 - Null, Undefined">
+<meta property="og:url" content="http://yoursite.com/2018/10/23/js-basic-03/index.html">
+<meta property="og:site_name" content="Shim SoYoung">
+<meta property="og:description" content="null    없음을 나타내는 값 객체가 없음을 나타낸다. typeof 연산을 해보면 아래와 같은 값을 반환한다.  12typeof null // &apos;object&apos;typeof undefined // &apos;undefined&apos;  undefined   없음을 나타내는 값 값이 대입되지 않은 변수 혹은 속성을 사용하려고 하면 undefined를 반환한다.  12345">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-23T07:43:14.411Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="자바스크립트 기본 정리 03 - Null, Undefined">
+<meta name="twitter:description" content="null    없음을 나타내는 값 객체가 없음을 나타낸다. typeof 연산을 해보면 아래와 같은 값을 반환한다.  12typeof null // &apos;object&apos;typeof undefined // &apos;undefined&apos;  undefined   없음을 나타내는 값 값이 대입되지 않은 변수 혹은 속성을 사용하려고 하면 undefined를 반환한다.  12345">
+  
+    <link rel="alternate" href="/atom.xml" title="Shim SoYoung" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Shim SoYoung</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">bbgrams</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js-basic-03" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/23/js-basic-03/" class="article-date">
+  <time datetime="2018-10-23T06:38:11.000Z" itemprop="datePublished">2018-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      자바스크립트 기본 정리 03 - Null, Undefined
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><code>null</code> </li>
+</ol>
+<ul>
+<li><code>없음</code>을 나타내는 값</li>
+<li><code>객체가 없음</code>을 나타낸다.</li>
+<li><code>typeof</code> 연산을 해보면 아래와 같은 값을 반환한다.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> <span class="comment">// 'object'</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span> <span class="comment">// 'undefined'</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>undefined</code></li>
+</ol>
+<ul>
+<li><code>없음</code>을 나타내는 값</li>
+<li>값이 대입되지 않은 변수 혹은 속성을 사용하려고 하면 <code>undefined</code>를 반환한다.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> foo;</span><br><span class="line">foo <span class="comment">// undefined =&gt; 값이 대입되지 않음.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line">obj.prop <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>프로그래머의 입장에서 명시적으로 부재를 나타내고 싶다면 항상 <code>null</code>을 사용하는 것이 좋다.</p>
+</li>
+<li><p>객체를 사용할 때 어떤 속성의 부재를 나타낼 때에는 <code>null</code>보다는, 아예 속성을 정의하지 않는 방식이 간편하므로 더 널리 사용된다.</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// null로 정의하는 법</span></span><br><span class="line">&#123;</span><br><span class="line">    name : <span class="string">'bibi'</span>,</span><br><span class="line">    address : <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 속성을 정의하지 않는 법</span></span><br><span class="line">&#123;</span><br><span class="line">    name : <span class="string">'bibi'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Null Check</li>
+</ol>
+<p>-<code>null</code>이나 <code>undefined</code>는 어떤 변수에도, 어떤 속성에도 들어있을 수 있기 때문에 코드를 짤 때 값이 있는 경우와 값이 없는 경우(즉 <code>null</code> 혹은 <code>undefined</code>인 경우)를 모두 고려해서 짜야한다. </p>
+<ul>
+<li>어떤 값이 <code>null</code> 혹은 <code>undefined</code> 인지 확인하는 작업을 <strong>null check</strong> 라고 한다.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printIfNotNull</span>(<span class="params">input</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(input !== <span class="literal">null</span> &amp;&amp; input !== <span class="literal">undefined</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(input);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>위 코드를 줄일 수 있다</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 아래의 세 식은 같은 의미이다.</span></span><br><span class="line">input !== <span class="literal">null</span> &amp;&amp; input !== <span class="literal">undefined</span></span><br><span class="line">input != <span class="literal">null</span></span><br><span class="line">input != <span class="literal">undefined</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 아래의 세 식은 같은 의미이다.</span></span><br><span class="line">input === <span class="literal">null</span> || input === <span class="literal">undefined</span></span><br><span class="line">input == <span class="literal">null</span></span><br><span class="line">input == <span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>null check를 할 때에는 <code>===</code> 보다는 <code>==</code>를 사용한다</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> === <span class="literal">undefined</span> <span class="comment">// false</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="literal">null</span> == <span class="number">1</span> <span class="comment">// false</span></span><br><span class="line"><span class="literal">null</span> == <span class="string">'hello'</span> <span class="comment">//false</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">false</span> <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="literal">undefined</span> == <span class="number">1</span> <span class="comment">// false</span></span><br><span class="line"><span class="literal">undefined</span> == <span class="string">'hello'</span> <span class="comment">// false</span></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">false</span> <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>==</code> 연산자는 한 쪽 피연산자에 <code>null</code>  혹은 <code>undefined</code>가 오면, 다른 쪽 피연산자에 <code>null</code> 혹은 <code>undefined</code>가 왔을때만 <code>true</code>를 반환하고, 다른 모든 경우에는 <code>false</code>를 반환한다.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/23/js-basic-03/" data-id="cjnlm03th0003lwu817zso3q4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/23/js-basic-04/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/22/js-basic-02/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">자바스크립트 기본 정리 02 - boolean</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/23/js-basic-04/">자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/23/js-basic-03/">자바스크립트 기본 정리 03 - Null, Undefined</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/22/js-basic-02/">자바스크립트 기본 정리 02 - boolean</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/21/js-basic-01/">자바스크립트 기본 정리 01 - string, number</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/19/This-is-my-first-blog/">This is my first blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

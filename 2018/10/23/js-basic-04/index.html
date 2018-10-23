@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope | Shim SoYoung</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="큰 프로그램을 잘게 쪼개어 특정 코드 뭉치를 반복해서 사용할 수 있도록 묶어놓은 코드 뭉치의 단위를 함수라 한다.  12345678// 함수 정의function add(x, y)&amp;#123; // add : 함수 이름,  x·y : 매개변수(parameter)    const result = x + y;    return result; // 반환값&amp;#125">
+<meta property="og:type" content="article">
+<meta property="og:title" content="자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope">
+<meta property="og:url" content="http://yoursite.com/2018/10/23/js-basic-04/index.html">
+<meta property="og:site_name" content="Shim SoYoung">
+<meta property="og:description" content="큰 프로그램을 잘게 쪼개어 특정 코드 뭉치를 반복해서 사용할 수 있도록 묶어놓은 코드 뭉치의 단위를 함수라 한다.  12345678// 함수 정의function add(x, y)&amp;#123; // add : 함수 이름,  x·y : 매개변수(parameter)    const result = x + y;    return result; // 반환값&amp;#125">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-23T10:49:25.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope">
+<meta name="twitter:description" content="큰 프로그램을 잘게 쪼개어 특정 코드 뭉치를 반복해서 사용할 수 있도록 묶어놓은 코드 뭉치의 단위를 함수라 한다.  12345678// 함수 정의function add(x, y)&amp;#123; // add : 함수 이름,  x·y : 매개변수(parameter)    const result = x + y;    return result; // 반환값&amp;#125">
+  
+    <link rel="alternate" href="/atom.xml" title="Shim SoYoung" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Shim SoYoung</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">bbgrams</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js-basic-04" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/23/js-basic-04/" class="article-date">
+  <time datetime="2018-10-23T07:43:11.000Z" itemprop="datePublished">2018-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>큰 프로그램을 잘게 쪼개어 특정 코드 뭉치를 반복해서 사용할 수 있도록 묶어놓은 코드 뭉치의 단위를 <code>함수</code>라 한다.</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 함수 정의</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>)</span>&#123; <span class="comment">// add : 함수 이름,  x·y : 매개변수(parameter)</span></span><br><span class="line">    <span class="keyword">const</span> result = x + y;</span><br><span class="line">    <span class="keyword">return</span> result; <span class="comment">// 반환값</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 함수 호출</span></span><br><span class="line">add(<span class="number">2</span>, <span class="number">3</span>) <span class="comment">// 2·3 : 인수(argument)</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>보통 코드가 쓰여진 순서대로 실행되지만, 여러가지 예외가 존재해서 코드의 실행 순서가 이리저리 옮겨다니기도 한다. </li>
+<li>함수 호출도 그 중 하나로, 함수 호출 코드를 만나면 코드의 실행 흐름이 호출된 함수의 내부로 옮겨간다.</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 - 함수 정의</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y; <span class="comment">// 3 - 함수 실행 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2 - 함수 호출</span></span><br><span class="line"><span class="keyword">const</span> result = add(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// 4 - 나머지 코드 실행</span></span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>위 코드 실행 흐름<ol>
+<li>함수가 정의된다.</li>
+<li>함수를 호출하는 코드를 읽고</li>
+<li>함수 내부의 코드가 실행된다.</li>
+<li>나머지 코드가 실행된다.</li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>매개변수는 바깥에서 선언된 변수와는 관계없는 독립적인 변수이다. </li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reassign</span>(<span class="params">x</span>) </span>&#123; </span><br><span class="line">    <span class="comment">// 인수에 무슨 값을 넣든 함수 내에서 x = 2 로 정의되었기 때문에 2가 반환된다.</span></span><br><span class="line">  x = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> y = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> result = reassign(y);</span><br><span class="line"><span class="comment">// 함수 호출 시 인수가 들어갈 자리에 변수를 써주고, 함수 내부에서 매개변수에 새로운 값을 대입한다고 하더라도 인수로 써준 변수의 값(y)이 변경되지 않는다.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(y); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>return</code> 키워드 바로 다음에 오는 값이 함수 호출의 결과값으로 반환되며, 반환되는 즉시 함수 실행이 끝난다.  <code>return</code> 뒤에 아무값도 써주지 않거나, 아예 <code>return</code> 구문을 쓰지 않으면 함수는 <code>undefinde</code> 값을 반환한다.</li>
+</ol>
+<hr>
+<ol>
+<li><p>코드는 일정 범위 안에서만 유효하다.</p>
+</li>
+<li><p>특정 변수가 유효한 코드 상의 유효범위를 <strong>스코프 Scope</strong> 라고 한다.</p>
+</li>
+<li><p>매개변수는 <strong>함수 스코프</strong>를 갖는다.</p>
+</li>
+<li><p>함수 내부 코드에서 매개변수 혹은 그 함수 안에서 정의된 변수만 사용 가능한것은 아니고, 바깥 스코프에 정의된 변수도 사용 가능하다.</p>
+</li>
+<li><p>식별자와 같은 이름을 찾을때까지 바깥스코프로 올라가는데 이 과정을 <strong>스코프 연쇄 scope chain</strong> 이라고 한다.</p>
+</li>
+<li><p>가장 바깥에 있는 스코프를 최상위 스코프 혹은 <strong>전역 스코프 global scope</strong>라고 한다.</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> x = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add5</span>(<span class="params">x</span>) </span>&#123; <span class="comment">// `x`라는 변수가 다시 정의됨</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123; <span class="comment">// `x`라는 변수가 다시 정의됨</span></span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> add(x, <span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add5(x);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>위와 같이 바깥 쪽 스코프에 존재하는 변수와 같은 이름을 갖는 변수를 안쪽 스코프에서 재정의 할 수 있다. 그렇게 되면 안쪽 스코프에서는 바깥쪽 스코프에 있는 이름들이 <strong>무시</strong>된다. 이런 현상을 <strong>변수가리기 variable shadowing</strong>이라고 한다.</li>
+</ul>
+<hr>
+<ol>
+<li><p>함수도 값이다.</p>
+<ul>
+<li>값으로 사용할 수 있는 자바스크립트의 함수는 <strong>1급시민</strong>이다.</li>
+<li>1급시민인 함수를 줄여서 <strong>1급함수</strong>라 부른다.</li>
+</ul>
+</li>
+<li><p>함수를 선언한 뒤 변수에 대입해서 호출할 수 있다.</p>
+</li>
+<li><p>배열이나 객체에 넣을 수 있다.</p>
+</li>
+<li><p>함수를 다른 함수에 인수로 넘길 수 있다.</p>
+</li>
+<li><p>함수에서 함수를 반환할 수 있다.</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1 - 함수를 배열이나 객체에 넣기</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line">[add];</span><br><span class="line">&#123;<span class="attr">addFunc</span>:add&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 - 함수를 인수로 넘기기</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEven</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>].filter(isEven); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 3 - 함수에서 함수 반환하기</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createEmptyFunc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">return</span> func</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<ol>
+<li><p>함수를 선언할 때는 이름을 붙이지 않아도 되고, 이렇게 이름이 없는 함수를 <strong>익명 함수 (anonymous function)</strong>, 혹은 함수 리터럴 (function literal)이라고 한다.</p>
+</li>
+<li><p>익명 함수는 이름이 없기 때문에 이름으로 호출 할 수 없다.</p>
+</li>
+<li><p>호출을 하려면 변수에 저장한 후에 변수의 이름을 통해 호출해야 한다.</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 변수에 저장한 후 변수의 이름을 통해 호출</span></span><br><span class="line"><span class="keyword">const</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>익명 함수는 함수를 만든 쪽이 아니라 다른 쪽에서 그 함수를 호출할 때 많이 사용된다.</p>
+</li>
+<li><p>대표적인 경우는 함수를 인수로 넘겨줄 때 이다.</p>
+</li>
+<li><p>예를들어 <code>filter</code> 메소드에 필터링 할 조건을 표현하는 함수를 넣어주면 <code>filter</code> 메소드쪽에서 각 요소에 대해 함수를 호출한 뒤 <code>true</code> 를 반환한 요소만을 필터링해서 반환한다.</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].filter(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">2</span> === <span class="number">0</span>;</span><br><span class="line">&#125;); <span class="comment">// [2, 4]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol>
+<li><p><strong>화살표 함수</strong>는 함수 정의를 위한 새로운 표기법이다</p>
+</li>
+<li><p>중괄호로 둘러주지 않으면 <code>return</code>구문이 없어도 바로 반환된다.</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 여기서 x + y는 바로 반환된다.</span></span><br><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y;</span><br><span class="line">add(<span class="number">2</span>, <span class="number">1</span>) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>function</code> 키워드를 통한 함수 정의처럼 여러 구문을 사용하려면 중괄호로 둘러싸주어야한다.<br><code>=&gt;</code> 다음 부분을 중괄호로 둘러싸면, 명시적으로 <code>return</code>을 하지 않는 한 아무것도 반환되지 않는다.</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = x + y;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">2</span>, <span class="number">3</span>) <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>매개변수가 하나밖에 없다면 매개변수 부분의 괄호를 쓰지 않아도 된다.</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> negate = <span class="function"><span class="params">x</span> =&gt;</span> !x;</span><br><span class="line">negate(<span class="number">1</span>) <span class="comment">// false</span></span><br><span class="line">negate(<span class="number">0</span>) <span class="comment">// true : 0은 falsy</span></span><br><span class="line">negate(<span class="string">''</span>) <span class="comment">// true : 빈문자열은 falsy</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>화살표 함수는 표기법이 간단하기 때문에 익명 함수를 다른 함수의 인수로 넘길 때 주로 사용된다.</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].filter(<span class="function"><span class="params">x</span> =&gt;</span> x % <span class="number">2</span> === <span class="number">0</span>) <span class="comment">// [2, 4]</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/23/js-basic-04/" data-id="cjnlm03tk0005lwu8la2y65ib" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/23/js-basic-03/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">자바스크립트 기본 정리 03 - Null, Undefined</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/23/js-basic-04/">자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/23/js-basic-03/">자바스크립트 기본 정리 03 - Null, Undefined</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/22/js-basic-02/">자바스크립트 기본 정리 02 - boolean</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/21/js-basic-01/">자바스크립트 기본 정리 01 - string, number</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/19/This-is-my-first-blog/">This is my first blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
