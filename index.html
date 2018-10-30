@@ -66,9 +66,162 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-js-basic-04" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-js-basic-06-object" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/23/js-basic-04/" class="article-date">
+    <a href="/2018/10/30/js-basic-06-object/" class="article-date">
+  <time datetime="2018-10-30T08:57:55.000Z" itemprop="datePublished">2018-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/30/js-basic-06-object/">자바스크립트 기본 정리 06 - 객체(Object)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="객체-리터럴-Object-Literal"><a href="#객체-리터럴-Object-Literal" class="headerlink" title="객체 리터럴 (Object Literal)"></a>객체 리터럴 (Object Literal)</h2><ul>
+<li><p>객체는 한꺼번에 여러 값을 담을 수 있는 통과 같은 <strong>자료구조(data structure)</strong> 이다. </p>
+</li>
+<li><p>객체 안에는 <strong>이름-값 쌍(name-value pair)</strong> 이 저장되는데 이를 객체의 <strong>속성(property)</strong> 라고 한다.</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> age = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">const</span> howManyCute = <span class="string">'awesome'</span>;</span><br><span class="line"><span class="keyword">const</span> toy = <span class="string">'fishing'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pets = &#123;</span><br><span class="line">  name : <span class="string">'비비'</span>,</span><br><span class="line">  <span class="string">'털 색'</span> : [<span class="string">'white'</span>, <span class="string">'gray'</span>], <span class="comment">// 2.</span></span><br><span class="line">  age : age, <span class="comment">// 3.</span></span><br><span class="line">  howManyCute, <span class="comment">// 3.</span></span><br><span class="line">  [toy] : <span class="string">'devilSnake'</span>, <span class="comment">// 4.</span></span><br><span class="line"></span><br><span class="line">  greet : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// 5.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'HELLO!!'</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  introduce()&#123; <span class="comment">// 7.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">`I am <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>. I AM <span class="subst">$&#123;<span class="keyword">this</span>.howManyCute.toUpperCase()&#125;</span>`</span> <span class="comment">// 8.</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">pets.name <span class="comment">// '비비'</span></span><br><span class="line">pets.age <span class="comment">// 3</span></span><br><span class="line">pets.fishing <span class="comment">// 'devilSnake'</span></span><br><span class="line">pets.greet() <span class="comment">// 'HELLO!!'</span></span><br><span class="line">pets.introduce() <span class="comment">// 'I am 비비. I AM AWESOME'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">name, '털 색', age ... - 속성 이름</span></span><br><span class="line"><span class="comment">'비비', 3, 배열 ... - 속성 값</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>속성 이름 부분에 문자열을 사용해도 상관 없다.</p>
+</li>
+<li><p><code>&#39;털 색&#39;</code> 과 같이 속성이름에 식별자에 허용되지 않는 문자(한글, 공백)가 들어간 경우 반드시 문자열 표기를 사용해야 한다.</p>
+</li>
+<li><p>이미 정의된 변수의 이름을 그대로 속성의 값으로 사용할 수도 있다.(객체 속성 이름과 속성 값으로 넣을 변수의 이름이 같다면(howManyCute) 줄여 쓸 수 있다.)</p>
+</li>
+<li><p>대괄호를 사용해서 다른 변수에 저장된 문자열을 그대로 속성의 이름으로 사용할 수 있다.</p>
+</li>
+<li><p>객체의 속성값으로 함수를 지정할 수 있다. </p>
+</li>
+<li><p><strong>어떤 객체의 속성으로 접근해서 사용하는 함수를 메소드(Method) 라고 한다</strong></p>
+</li>
+<li><p>객체 리터럴 안에서 특별한 표기법을 사용해 메소드를 정의할 수도 있다.</p>
+</li>
+<li><p><code>this</code> 키워드를 사용하면, 메소드 호출 시에 해당 메소드를 갖고 있는 객체에 접근할 수 있다.</p>
+</li>
+</ol>
+<h2 id="점-표기법-대괄호-표기법"><a href="#점-표기법-대괄호-표기법" class="headerlink" title="점 표기법, 대괄호 표기법"></a>점 표기법, 대괄호 표기법</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pets = &#123;&#125;; <span class="comment">// 빈 객체</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 점 표기법 (Dot notation)</span></span><br><span class="line">pets.name = <span class="string">'비비'</span>;</span><br><span class="line">pets.age = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 대괄호 표기법 (Bracket notation)</span></span><br><span class="line">person[<span class="string">'털 색'</span>] = [<span class="string">'white'</span>, <span class="string">'gray'</span>];</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><strong>속성 접근자(property accessor)</strong> 를 이용해 이미 생성된 객체의 속성을 지정해 줄 수 있다.</p>
+</li>
+<li><p>식별자에 허용되지 않는 문자(한글, 공백)를 속성 이름에 넣어야 할 경우에는 반드시 <strong>대괄호 표기법</strong>을 사용해야 한다.</p>
+</li>
+</ol>
+<h2 id="객체-다루기"><a href="#객체-다루기" class="headerlink" title="객체 다루기"></a>객체 다루기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 속성 삭제하기</span></span><br><span class="line"><span class="keyword">delete</span> pets.age;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 속성이 객체에 존재하는지 확인하기</span></span><br><span class="line"><span class="string">'age'</span> <span class="keyword">in</span> pets; <span class="comment">// false : 위에서 삭제함</span></span><br><span class="line"><span class="string">'털 색'</span> <span class="keyword">in</span> pets; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>속성 접근자, <code>delete</code> 연산자, <code>in</code> 연산자 등을 이용해서 객체에 대한 정보를 읽고 쓸 수 있다.</li>
+</ul>
+<h2 id="메소드-Method-위-예제"><a href="#메소드-Method-위-예제" class="headerlink" title="메소드 (Method) - 위 예제"></a>메소드 (Method) - 위 예제</h2><h2 id="This"><a href="#This" class="headerlink" title="This"></a>This</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">introduce</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`제 이름은 <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>이고 <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span>살 입니다.`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getOlder</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bibi = &#123;</span><br><span class="line">  name : <span class="string">'비비'</span>,</span><br><span class="line">  age : <span class="number">3</span>,</span><br><span class="line">  introduce,</span><br><span class="line">  getOlder,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> doong = &#123;</span><br><span class="line">  name : <span class="string">'둥둥'</span>,</span><br><span class="line">  age : <span class="number">1</span>,</span><br><span class="line">  introduce,</span><br><span class="line">  getOlder,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.</span></span><br><span class="line"><span class="built_in">console</span>.log(bibi.introduce()) <span class="comment">// 제 이름은 비비이고 3살 입니다.</span></span><br><span class="line"><span class="built_in">console</span>.log(doong.introduce()) <span class="comment">// 제 이름은 둥둥이고 1살 입니다.</span></span><br><span class="line">bibi.getOlder()</span><br><span class="line"><span class="built_in">console</span>.log(bibi.introduce()) <span class="comment">// 제 이름은 비비이고 4살 입니다.</span></span><br><span class="line">bibi.getOlder()</span><br><span class="line"><span class="built_in">console</span>.log(bibi.introduce()) <span class="comment">// 제 이름은 비비이고 5살 입니다.</span></span><br><span class="line">bibi.getOlder()</span><br><span class="line"><span class="built_in">console</span>.log(bibi.introduce()) <span class="comment">// 제 이름은 비비이고 6살 입니다.</span></span><br><span class="line"><span class="built_in">console</span>.log(doong.introduce()) <span class="comment">// 제 이름은 둥둥이고 1살 입니다.</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>메소드를 사용하면 <strong>데이터</strong> 와 그 데이터와 관련된 <strong>동작</strong> 을 <strong>객체라는 하나의 단위로 묶어서 다룰 수 있다</strong> . (함수 대신 메소드를 사용하는 핵심적인 이유)</p>
+</li>
+<li><p><code>function</code> 키워드를 통해 정의된 함수 내부의 <code>this</code> 키워드는 <strong>함수가 호출될 때 결정</strong> 된다.</p>
+</li>
+<li><p><strong>어떤 객체의 메소드로 사용되느냐에 따라 메소드 내부의 <code>this</code>가 가리키는 객체가 달라질 수 있다</strong></p>
+</li>
+<li><p>다만 <strong>화살표 함수는 함수가 정의된 문맥에 따라 <code>this</code>가 결정된다</strong> .</p>
+</li>
+</ol>
+<h2 id="프로토타입-Prototype"><a href="#프로토타입-Prototype" class="headerlink" title="프로토타입 (Prototype)"></a>프로토타입 (Prototype)</h2><ul>
+<li><p>객체 간에 공유되어야 하는 속성과 메소드를 프로토타입이라는 기능을 이용해서 저장한다.</p>
+</li>
+<li><p>어떤 객체에 프로토타입을 지정하면, 프로토타입의 속성을 해당 객체에서 <strong>재사용</strong> 할 수 있다.</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> petsPrototype = &#123;</span><br><span class="line">  introduce : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`제 이름은 <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> 입니다`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bibi = <span class="built_in">Object</span>.create(petsPrototype); <span class="comment">// 새 객체를 생성하고 프로토타입을 지정함</span></span><br><span class="line">bibi.name = <span class="string">'비비'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> doong = <span class="built_in">Object</span>.create(petsPrototype);</span><br><span class="line">doong.name = <span class="string">'둥둥'</span>;</span><br><span class="line"></span><br><span class="line">bibi.introduce(); <span class="comment">// 제 이름은 비비 입니다.</span></span><br><span class="line">doong.introduce(); <span class="comment">// 제 이름은 둥둥 입니다.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.getPrototypeOf(bibi) === petsPrototype <span class="comment">// 6.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(bibi, newPetsPrototype) <span class="comment">// 7.</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>프로토타입 기능을 이용해 한 객체에서 다른 객체의 기능을 가져와 사용하는 것을 <strong>프로토타입 상속(prototype inheritance)</strong> 라고 한다.</p>
+</li>
+<li><p><strong><code>petsPrototype</code>은 <code>bibi</code>의 프로토타입이다.</strong></p>
+</li>
+<li><p><code>petsPrototype</code>은 <code>doong</code>의 프로토타입이다.</p>
+</li>
+<li><p><strong><code>bibi</code> 객체는 <code>petsPrototype</code> 객체를 상속받았다.</strong></p>
+</li>
+<li><p><code>doong</code> 객체는 <code>petsPrototype</code> 객체를 상속받았다.</p>
+</li>
+<li><p><code>Object.getPrototypeOf</code> 함수를 사용해 어떤 객체의 프로토타입을 읽어올 수 있다.</p>
+</li>
+<li><p><code>Object.setPrototypeOf</code> 함수를 사용해 이미 생성된 객체의 프로토타입을 변경할 수 있다. (굉장히 느리므로 사용은 지양한다.)</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/30/js-basic-06-object/" data-id="cjnvlx71c0005bku8zb9c3mfm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js-basic-05-if-for-while" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/23/js-basic-05-if-for-while/" class="article-date">
+  <time datetime="2018-10-23T10:57:55.000Z" itemprop="datePublished">2018-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/23/js-basic-05-if-for-while/">자바스크립트 기본 정리 05 - 제어구문(조건문, 반복문)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="조건문-Conditional-Statement"><a href="#조건문-Conditional-Statement" class="headerlink" title="조건문 (Conditional Statement)"></a>조건문 (Conditional Statement)</h2><h3 id="1-if-else-구문"><a href="#1-if-else-구문" class="headerlink" title="1. if...else 구문"></a>1. <code>if...else</code> 구문</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">roll</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">6</span>) <span class="comment">// 1 ~ 7까지의 랜덤한 숫자</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">game</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> result = roll(); <span class="comment">// roll 함수 호출</span></span><br><span class="line">  </span><br><span class="line">  alert(<span class="string">`결과 : <span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> ( result &gt;= <span class="number">4</span>)&#123;</span><br><span class="line">    <span class="comment">// 괄호 안의 결과값이 true 이면</span></span><br><span class="line">    alert (<span class="string">'승리'</span>);</span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 위의 괄호 안의 결과값이 false 이면</span></span><br><span class="line">    alert(<span class="string">'패배'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">game() <span class="comment">// game 함수 호출</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><code>else</code>가 필요없는 경우에는 <code>else</code>를 생략할 수 있다.</p>
+</li>
+<li><p>중괄호 내부에 들어있는 구문이 하나라면 중괄호를 생략할 수 있다</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(result === <span class="number">7</span>) alert(<span class="string">'럭키!'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>if ..else</code></p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translateColor</span>(<span class="params">english</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (english === <span class="string">'red'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'빨강색'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (english === <span class="string">'blue'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'파랑색'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (english === <span class="string">'purple'</span> || english === <span class="string">'violet'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'보라색'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'일치하는 색깔이 없습니다.'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="2-switch-구문"><a href="#2-switch-구문" class="headerlink" title="2. switch 구문"></a>2. switch 구문</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translateColor</span>(<span class="params">english</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result;</span><br><span class="line">  <span class="keyword">switch</span>(english)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'red'</span> :</span><br><span class="line">      result = <span class="string">'빨강색'</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'blue'</span> :</span><br><span class="line">      result = <span class="string">'파랑색'</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'purple'</span> :</span><br><span class="line">     result = <span class="string">'보라색'</span>;</span><br><span class="line">     <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span> : </span><br><span class="line">      result = <span class="string">'일치하는 색상이 없습니다'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/23/js-basic-05-if-for-while/" data-id="cjnvlx71d0006bku882f7ives" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js-basic-04-function-scope" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/23/js-basic-04-function-scope/" class="article-date">
   <time datetime="2018-10-23T07:43:11.000Z" itemprop="datePublished">2018-10-23</time>
 </a>
     
@@ -80,7 +233,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/23/js-basic-04/">자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope</a>
+      <a class="article-title" href="/2018/10/23/js-basic-04-function-scope/">자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope</a>
     </h1>
   
 
@@ -187,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/23/js-basic-04/" data-id="cjnlm03tk0005lwu8la2y65ib" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/23/js-basic-04-function-scope/" data-id="cjnvlx71b0004bku86wnwq2xg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,9 +350,9 @@
 
 
   
-    <article id="post-js-basic-03" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-js-basic-03-null-undefined" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/23/js-basic-03/" class="article-date">
+    <a href="/2018/10/23/js-basic-03-null-undefined/" class="article-date">
   <time datetime="2018-10-23T06:38:11.000Z" itemprop="datePublished">2018-10-23</time>
 </a>
     
@@ -211,7 +364,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/23/js-basic-03/">자바스크립트 기본 정리 03 - Null, Undefined</a>
+      <a class="article-title" href="/2018/10/23/js-basic-03-null-undefined/">자바스크립트 기본 정리 03 - Null, Undefined</a>
     </h1>
   
 
@@ -266,7 +419,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/23/js-basic-03/" data-id="cjnlm03th0003lwu817zso3q4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/23/js-basic-03-null-undefined/" data-id="cjnvlx7180002bku8r1sx1h5c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -276,9 +429,9 @@
 
 
   
-    <article id="post-js-basic-02" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-js-basic-02-boolean" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/22/js-basic-02/" class="article-date">
+    <a href="/2018/10/22/js-basic-02-boolean/" class="article-date">
   <time datetime="2018-10-22T06:29:11.000Z" itemprop="datePublished">2018-10-22</time>
 </a>
     
@@ -290,7 +443,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/22/js-basic-02/">자바스크립트 기본 정리 02 - boolean</a>
+      <a class="article-title" href="/2018/10/22/js-basic-02-boolean/">자바스크립트 기본 정리 02 - boolean</a>
     </h1>
   
 
@@ -333,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/22/js-basic-02/" data-id="cjnlm03tj0004lwu8889ga6n7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/22/js-basic-02-boolean/" data-id="cjnvlx6z40000bku8ft0a5b1k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -343,9 +496,9 @@
 
 
   
-    <article id="post-js-basic-01" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-js-basic-01-string-number" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/21/js-basic-01/" class="article-date">
+    <a href="/2018/10/21/js-basic-01-string-number/" class="article-date">
   <time datetime="2018-10-21T06:29:11.000Z" itemprop="datePublished">2018-10-21</time>
 </a>
     
@@ -357,7 +510,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/21/js-basic-01/">자바스크립트 기본 정리 01 - string, number</a>
+      <a class="article-title" href="/2018/10/21/js-basic-01-string-number/">자바스크립트 기본 정리 01 - string, number</a>
     </h1>
   
 
@@ -427,7 +580,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/js-basic-01/" data-id="cjnlm03tf0002lwu8usotpjz5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/21/js-basic-01-string-number/" data-id="cjnvlx7150001bku8id2bjs49" class="article-share-link">Share</a>
       
       
     </footer>
@@ -468,7 +621,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/19/This-is-my-first-blog/" data-id="cjnlm03sf0000lwu8zy7upggf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/19/This-is-my-first-blog/" data-id="cjnvlx7190003bku8bnja6hwn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -513,7 +666,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/19/hello-world/" data-id="cjnlm03tc0001lwu8gtyof2ks" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/19/hello-world/" data-id="cjnvlx72m0007bku8wb4aha6n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -554,23 +707,23 @@
       <ul>
         
           <li>
-            <a href="/2018/10/23/js-basic-04/">자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope</a>
+            <a href="/2018/10/30/js-basic-06-object/">자바스크립트 기본 정리 06 - 객체(Object)</a>
           </li>
         
           <li>
-            <a href="/2018/10/23/js-basic-03/">자바스크립트 기본 정리 03 - Null, Undefined</a>
+            <a href="/2018/10/23/js-basic-05-if-for-while/">자바스크립트 기본 정리 05 - 제어구문(조건문, 반복문)</a>
           </li>
         
           <li>
-            <a href="/2018/10/22/js-basic-02/">자바스크립트 기본 정리 02 - boolean</a>
+            <a href="/2018/10/23/js-basic-04-function-scope/">자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope</a>
           </li>
         
           <li>
-            <a href="/2018/10/21/js-basic-01/">자바스크립트 기본 정리 01 - string, number</a>
+            <a href="/2018/10/23/js-basic-03-null-undefined/">자바스크립트 기본 정리 03 - Null, Undefined</a>
           </li>
         
           <li>
-            <a href="/2018/10/19/This-is-my-first-blog/">This is my first blog</a>
+            <a href="/2018/10/22/js-basic-02-boolean/">자바스크립트 기본 정리 02 - boolean</a>
           </li>
         
       </ul>

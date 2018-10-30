@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>자바스크립트 기본 정리 06 - 객체(Object) | Shim SoYoung</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="객체 리터럴 (Object Literal) 객체는 한꺼번에 여러 값을 담을 수 있는 통과 같은 자료구조(data structure) 이다.   객체 안에는 이름-값 쌍(name-value pair) 이 저장되는데 이를 객체의 속성(property) 라고 한다.   1234567891011121314151617181920212223242526272829303">
+<meta property="og:type" content="article">
+<meta property="og:title" content="자바스크립트 기본 정리 06 - 객체(Object)">
+<meta property="og:url" content="http://yoursite.com/2018/10/30/js-basic-06-object/index.html">
+<meta property="og:site_name" content="Shim SoYoung">
+<meta property="og:description" content="객체 리터럴 (Object Literal) 객체는 한꺼번에 여러 값을 담을 수 있는 통과 같은 자료구조(data structure) 이다.   객체 안에는 이름-값 쌍(name-value pair) 이 저장되는데 이를 객체의 속성(property) 라고 한다.   1234567891011121314151617181920212223242526272829303">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-30T10:41:27.348Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="자바스크립트 기본 정리 06 - 객체(Object)">
+<meta name="twitter:description" content="객체 리터럴 (Object Literal) 객체는 한꺼번에 여러 값을 담을 수 있는 통과 같은 자료구조(data structure) 이다.   객체 안에는 이름-값 쌍(name-value pair) 이 저장되는데 이를 객체의 속성(property) 라고 한다.   1234567891011121314151617181920212223242526272829303">
+  
+    <link rel="alternate" href="/atom.xml" title="Shim SoYoung" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Shim SoYoung</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">bbgrams</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js-basic-06-object" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/30/js-basic-06-object/" class="article-date">
+  <time datetime="2018-10-30T08:57:55.000Z" itemprop="datePublished">2018-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      자바스크립트 기본 정리 06 - 객체(Object)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="객체-리터럴-Object-Literal"><a href="#객체-리터럴-Object-Literal" class="headerlink" title="객체 리터럴 (Object Literal)"></a>객체 리터럴 (Object Literal)</h2><ul>
+<li><p>객체는 한꺼번에 여러 값을 담을 수 있는 통과 같은 <strong>자료구조(data structure)</strong> 이다. </p>
+</li>
+<li><p>객체 안에는 <strong>이름-값 쌍(name-value pair)</strong> 이 저장되는데 이를 객체의 <strong>속성(property)</strong> 라고 한다.</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> age = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">const</span> howManyCute = <span class="string">'awesome'</span>;</span><br><span class="line"><span class="keyword">const</span> toy = <span class="string">'fishing'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pets = &#123;</span><br><span class="line">  name : <span class="string">'비비'</span>,</span><br><span class="line">  <span class="string">'털 색'</span> : [<span class="string">'white'</span>, <span class="string">'gray'</span>], <span class="comment">// 2.</span></span><br><span class="line">  age : age, <span class="comment">// 3.</span></span><br><span class="line">  howManyCute, <span class="comment">// 3.</span></span><br><span class="line">  [toy] : <span class="string">'devilSnake'</span>, <span class="comment">// 4.</span></span><br><span class="line"></span><br><span class="line">  greet : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// 5.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'HELLO!!'</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  introduce()&#123; <span class="comment">// 7.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">`I am <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>. I AM <span class="subst">$&#123;<span class="keyword">this</span>.howManyCute.toUpperCase()&#125;</span>`</span> <span class="comment">// 8.</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">pets.name <span class="comment">// '비비'</span></span><br><span class="line">pets.age <span class="comment">// 3</span></span><br><span class="line">pets.fishing <span class="comment">// 'devilSnake'</span></span><br><span class="line">pets.greet() <span class="comment">// 'HELLO!!'</span></span><br><span class="line">pets.introduce() <span class="comment">// 'I am 비비. I AM AWESOME'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">name, '털 색', age ... - 속성 이름</span></span><br><span class="line"><span class="comment">'비비', 3, 배열 ... - 속성 값</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>속성 이름 부분에 문자열을 사용해도 상관 없다.</p>
+</li>
+<li><p><code>&#39;털 색&#39;</code> 과 같이 속성이름에 식별자에 허용되지 않는 문자(한글, 공백)가 들어간 경우 반드시 문자열 표기를 사용해야 한다.</p>
+</li>
+<li><p>이미 정의된 변수의 이름을 그대로 속성의 값으로 사용할 수도 있다.(객체 속성 이름과 속성 값으로 넣을 변수의 이름이 같다면(howManyCute) 줄여 쓸 수 있다.)</p>
+</li>
+<li><p>대괄호를 사용해서 다른 변수에 저장된 문자열을 그대로 속성의 이름으로 사용할 수 있다.</p>
+</li>
+<li><p>객체의 속성값으로 함수를 지정할 수 있다. </p>
+</li>
+<li><p><strong>어떤 객체의 속성으로 접근해서 사용하는 함수를 메소드(Method) 라고 한다</strong></p>
+</li>
+<li><p>객체 리터럴 안에서 특별한 표기법을 사용해 메소드를 정의할 수도 있다.</p>
+</li>
+<li><p><code>this</code> 키워드를 사용하면, 메소드 호출 시에 해당 메소드를 갖고 있는 객체에 접근할 수 있다.</p>
+</li>
+</ol>
+<h2 id="점-표기법-대괄호-표기법"><a href="#점-표기법-대괄호-표기법" class="headerlink" title="점 표기법, 대괄호 표기법"></a>점 표기법, 대괄호 표기법</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pets = &#123;&#125;; <span class="comment">// 빈 객체</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 점 표기법 (Dot notation)</span></span><br><span class="line">pets.name = <span class="string">'비비'</span>;</span><br><span class="line">pets.age = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 대괄호 표기법 (Bracket notation)</span></span><br><span class="line">person[<span class="string">'털 색'</span>] = [<span class="string">'white'</span>, <span class="string">'gray'</span>];</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><strong>속성 접근자(property accessor)</strong> 를 이용해 이미 생성된 객체의 속성을 지정해 줄 수 있다.</p>
+</li>
+<li><p>식별자에 허용되지 않는 문자(한글, 공백)를 속성 이름에 넣어야 할 경우에는 반드시 <strong>대괄호 표기법</strong>을 사용해야 한다.</p>
+</li>
+</ol>
+<h2 id="객체-다루기"><a href="#객체-다루기" class="headerlink" title="객체 다루기"></a>객체 다루기</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 속성 삭제하기</span></span><br><span class="line"><span class="keyword">delete</span> pets.age;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 속성이 객체에 존재하는지 확인하기</span></span><br><span class="line"><span class="string">'age'</span> <span class="keyword">in</span> pets; <span class="comment">// false : 위에서 삭제함</span></span><br><span class="line"><span class="string">'털 색'</span> <span class="keyword">in</span> pets; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>속성 접근자, <code>delete</code> 연산자, <code>in</code> 연산자 등을 이용해서 객체에 대한 정보를 읽고 쓸 수 있다.</li>
+</ul>
+<h2 id="메소드-Method-위-예제"><a href="#메소드-Method-위-예제" class="headerlink" title="메소드 (Method) - 위 예제"></a>메소드 (Method) - 위 예제</h2><h2 id="This"><a href="#This" class="headerlink" title="This"></a>This</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">introduce</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`제 이름은 <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>이고 <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span>살 입니다.`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getOlder</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.age++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bibi = &#123;</span><br><span class="line">  name : <span class="string">'비비'</span>,</span><br><span class="line">  age : <span class="number">3</span>,</span><br><span class="line">  introduce,</span><br><span class="line">  getOlder,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> doong = &#123;</span><br><span class="line">  name : <span class="string">'둥둥'</span>,</span><br><span class="line">  age : <span class="number">1</span>,</span><br><span class="line">  introduce,</span><br><span class="line">  getOlder,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.</span></span><br><span class="line"><span class="built_in">console</span>.log(bibi.introduce()) <span class="comment">// 제 이름은 비비이고 3살 입니다.</span></span><br><span class="line"><span class="built_in">console</span>.log(doong.introduce()) <span class="comment">// 제 이름은 둥둥이고 1살 입니다.</span></span><br><span class="line">bibi.getOlder()</span><br><span class="line"><span class="built_in">console</span>.log(bibi.introduce()) <span class="comment">// 제 이름은 비비이고 4살 입니다.</span></span><br><span class="line">bibi.getOlder()</span><br><span class="line"><span class="built_in">console</span>.log(bibi.introduce()) <span class="comment">// 제 이름은 비비이고 5살 입니다.</span></span><br><span class="line">bibi.getOlder()</span><br><span class="line"><span class="built_in">console</span>.log(bibi.introduce()) <span class="comment">// 제 이름은 비비이고 6살 입니다.</span></span><br><span class="line"><span class="built_in">console</span>.log(doong.introduce()) <span class="comment">// 제 이름은 둥둥이고 1살 입니다.</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>메소드를 사용하면 <strong>데이터</strong> 와 그 데이터와 관련된 <strong>동작</strong> 을 <strong>객체라는 하나의 단위로 묶어서 다룰 수 있다</strong> . (함수 대신 메소드를 사용하는 핵심적인 이유)</p>
+</li>
+<li><p><code>function</code> 키워드를 통해 정의된 함수 내부의 <code>this</code> 키워드는 <strong>함수가 호출될 때 결정</strong> 된다.</p>
+</li>
+<li><p><strong>어떤 객체의 메소드로 사용되느냐에 따라 메소드 내부의 <code>this</code>가 가리키는 객체가 달라질 수 있다</strong></p>
+</li>
+<li><p>다만 <strong>화살표 함수는 함수가 정의된 문맥에 따라 <code>this</code>가 결정된다</strong> .</p>
+</li>
+</ol>
+<h2 id="프로토타입-Prototype"><a href="#프로토타입-Prototype" class="headerlink" title="프로토타입 (Prototype)"></a>프로토타입 (Prototype)</h2><ul>
+<li><p>객체 간에 공유되어야 하는 속성과 메소드를 프로토타입이라는 기능을 이용해서 저장한다.</p>
+</li>
+<li><p>어떤 객체에 프로토타입을 지정하면, 프로토타입의 속성을 해당 객체에서 <strong>재사용</strong> 할 수 있다.</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> petsPrototype = &#123;</span><br><span class="line">  introduce : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`제 이름은 <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> 입니다`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bibi = <span class="built_in">Object</span>.create(petsPrototype); <span class="comment">// 새 객체를 생성하고 프로토타입을 지정함</span></span><br><span class="line">bibi.name = <span class="string">'비비'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> doong = <span class="built_in">Object</span>.create(petsPrototype);</span><br><span class="line">doong.name = <span class="string">'둥둥'</span>;</span><br><span class="line"></span><br><span class="line">bibi.introduce(); <span class="comment">// 제 이름은 비비 입니다.</span></span><br><span class="line">doong.introduce(); <span class="comment">// 제 이름은 둥둥 입니다.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.getPrototypeOf(bibi) === petsPrototype <span class="comment">// 6.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(bibi, newPetsPrototype) <span class="comment">// 7.</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>프로토타입 기능을 이용해 한 객체에서 다른 객체의 기능을 가져와 사용하는 것을 <strong>프로토타입 상속(prototype inheritance)</strong> 라고 한다.</p>
+</li>
+<li><p><strong><code>petsPrototype</code>은 <code>bibi</code>의 프로토타입이다.</strong></p>
+</li>
+<li><p><code>petsPrototype</code>은 <code>doong</code>의 프로토타입이다.</p>
+</li>
+<li><p><strong><code>bibi</code> 객체는 <code>petsPrototype</code> 객체를 상속받았다.</strong></p>
+</li>
+<li><p><code>doong</code> 객체는 <code>petsPrototype</code> 객체를 상속받았다.</p>
+</li>
+<li><p><code>Object.getPrototypeOf</code> 함수를 사용해 어떤 객체의 프로토타입을 읽어올 수 있다.</p>
+</li>
+<li><p><code>Object.setPrototypeOf</code> 함수를 사용해 이미 생성된 객체의 프로토타입을 변경할 수 있다. (굉장히 느리므로 사용은 지양한다.)</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/30/js-basic-06-object/" data-id="cjnvlx71c0005bku8zb9c3mfm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/23/js-basic-05-if-for-while/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">자바스크립트 기본 정리 05 - 제어구문(조건문, 반복문)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/30/js-basic-06-object/">자바스크립트 기본 정리 06 - 객체(Object)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/23/js-basic-05-if-for-while/">자바스크립트 기본 정리 05 - 제어구문(조건문, 반복문)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/23/js-basic-04-function-scope/">자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/23/js-basic-03-null-undefined/">자바스크립트 기본 정리 03 - Null, Undefined</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/22/js-basic-02-boolean/">자바스크립트 기본 정리 02 - boolean</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

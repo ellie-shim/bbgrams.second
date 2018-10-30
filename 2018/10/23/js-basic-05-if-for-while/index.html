@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>자바스크립트 기본 정리 05 - 제어구문(조건문, 반복문) | Shim SoYoung</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="조건문 (Conditional Statement)1. if...else 구문12345678910111213141516171819function roll()&amp;#123;  return Math.ceil(Math.random() * 6) // 1 ~ 7까지의 랜덤한 숫자&amp;#125;function game()&amp;#123;  const result = roll();">
+<meta property="og:type" content="article">
+<meta property="og:title" content="자바스크립트 기본 정리 05 - 제어구문(조건문, 반복문)">
+<meta property="og:url" content="http://yoursite.com/2018/10/23/js-basic-05-if-for-while/index.html">
+<meta property="og:site_name" content="Shim SoYoung">
+<meta property="og:description" content="조건문 (Conditional Statement)1. if...else 구문12345678910111213141516171819function roll()&amp;#123;  return Math.ceil(Math.random() * 6) // 1 ~ 7까지의 랜덤한 숫자&amp;#125;function game()&amp;#123;  const result = roll();">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-30T08:30:52.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="자바스크립트 기본 정리 05 - 제어구문(조건문, 반복문)">
+<meta name="twitter:description" content="조건문 (Conditional Statement)1. if...else 구문12345678910111213141516171819function roll()&amp;#123;  return Math.ceil(Math.random() * 6) // 1 ~ 7까지의 랜덤한 숫자&amp;#125;function game()&amp;#123;  const result = roll();">
+  
+    <link rel="alternate" href="/atom.xml" title="Shim SoYoung" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Shim SoYoung</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">bbgrams</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js-basic-05-if-for-while" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/23/js-basic-05-if-for-while/" class="article-date">
+  <time datetime="2018-10-23T10:57:55.000Z" itemprop="datePublished">2018-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      자바스크립트 기본 정리 05 - 제어구문(조건문, 반복문)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="조건문-Conditional-Statement"><a href="#조건문-Conditional-Statement" class="headerlink" title="조건문 (Conditional Statement)"></a>조건문 (Conditional Statement)</h2><h3 id="1-if-else-구문"><a href="#1-if-else-구문" class="headerlink" title="1. if...else 구문"></a>1. <code>if...else</code> 구문</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">roll</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random() * <span class="number">6</span>) <span class="comment">// 1 ~ 7까지의 랜덤한 숫자</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">game</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> result = roll(); <span class="comment">// roll 함수 호출</span></span><br><span class="line">  </span><br><span class="line">  alert(<span class="string">`결과 : <span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> ( result &gt;= <span class="number">4</span>)&#123;</span><br><span class="line">    <span class="comment">// 괄호 안의 결과값이 true 이면</span></span><br><span class="line">    alert (<span class="string">'승리'</span>);</span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 위의 괄호 안의 결과값이 false 이면</span></span><br><span class="line">    alert(<span class="string">'패배'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">game() <span class="comment">// game 함수 호출</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><code>else</code>가 필요없는 경우에는 <code>else</code>를 생략할 수 있다.</p>
+</li>
+<li><p>중괄호 내부에 들어있는 구문이 하나라면 중괄호를 생략할 수 있다</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(result === <span class="number">7</span>) alert(<span class="string">'럭키!'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>if ..else</code></p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translateColor</span>(<span class="params">english</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (english === <span class="string">'red'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'빨강색'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (english === <span class="string">'blue'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'파랑색'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (english === <span class="string">'purple'</span> || english === <span class="string">'violet'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'보라색'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'일치하는 색깔이 없습니다.'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="2-switch-구문"><a href="#2-switch-구문" class="headerlink" title="2. switch 구문"></a>2. switch 구문</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">translateColor</span>(<span class="params">english</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result;</span><br><span class="line">  <span class="keyword">switch</span>(english)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'red'</span> :</span><br><span class="line">      result = <span class="string">'빨강색'</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'blue'</span> :</span><br><span class="line">      result = <span class="string">'파랑색'</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'purple'</span> :</span><br><span class="line">     result = <span class="string">'보라색'</span>;</span><br><span class="line">     <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span> : </span><br><span class="line">      result = <span class="string">'일치하는 색상이 없습니다'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/23/js-basic-05-if-for-while/" data-id="cjnvlx71d0006bku882f7ives" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/30/js-basic-06-object/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          자바스크립트 기본 정리 06 - 객체(Object)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/23/js-basic-04-function-scope/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/30/js-basic-06-object/">자바스크립트 기본 정리 06 - 객체(Object)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/23/js-basic-05-if-for-while/">자바스크립트 기본 정리 05 - 제어구문(조건문, 반복문)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/23/js-basic-04-function-scope/">자바스크립트 기본 정리 04 - 함수 function, 스코프 Scope</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/23/js-basic-03-null-undefined/">자바스크립트 기본 정리 03 - Null, Undefined</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/22/js-basic-02-boolean/">자바스크립트 기본 정리 02 - boolean</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
